@@ -10,6 +10,7 @@ public class poiMain {
 	public static void main(String[] args) throws Exception {
 		
 		Watermark watermark = new Watermark();
+		
         watermark.setText("測試浮水印12345678910111213");
         watermark.setColor(Color.gray);
         watermark.setShx(0.2F);

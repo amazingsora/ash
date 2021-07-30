@@ -3,7 +3,6 @@ package org.ash.poi;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -27,8 +26,6 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.util.StringUtil;
-import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -231,7 +228,6 @@ public class CompareFile {
 			}
 		}
 		Row row = sheet.createRow(count++);
-		Cell cell;
 		row.createCell(0).setCellValue("總計	" + total + "	筆");
 		row.createCell(1).setCellValue("不相同筆數::	" + unsame);
 		row.createCell(2).setCellValue("相同筆數::	" + same);
@@ -280,7 +276,6 @@ public class CompareFile {
 //						cell.setCellStyle(red);
 					} else {
 						XSSFRow row = sheet.createRow(count++);
-						XSSFCell cell;
 
 						String filestr1[] = key.split("\\\\");
 						String FileName = filestr1[filestr1.length - 1];
