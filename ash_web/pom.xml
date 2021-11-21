@@ -16,7 +16,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
-
 	</dependencies>
 	<build>
 		<plugins>
@@ -55,13 +54,7 @@
 							<arguments>run build</arguments>
 						</configuration>
 					</execution>
-
-
 				</executions>
-
-
-
-
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
