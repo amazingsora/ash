@@ -27,7 +27,7 @@ public class HeadPhoneReader {
 		Okhttp3Until until = new Okhttp3Until(URL);
 		runAdultCheck(URL + M, until);
 		String body = until.getBody(URL + M);
-		String [] keys = {"sony"};
+		String [] keys = {"wm1a"};
 		parseArticle(body,keys,"");
 	}
 

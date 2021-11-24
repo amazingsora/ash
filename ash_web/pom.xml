@@ -25,7 +25,7 @@
 				<version>1.9.1</version>
 				<configuration>
 					<nodeVersion>v17.1.0</nodeVersion>
-					<npmVersion>8.1.2</npmVersion>
+					<npmVersion>8.1.4</npmVersion>
 					<yarnVersion>v1.22.17</yarnVersion>
 					<installDirectory>target</installDirectory>
 					<workingDirectory>src/main/web/</workingDirectory>
