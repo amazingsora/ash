@@ -6,29 +6,29 @@ import { P } from 'src/until/P';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'web';
-  data :string = '字串寫死';
-  data2 :any;
-  ps:any[] ;
-  constructor(private test:TestService){
+  data: string = '字串寫死';
+  data2: any;
+  ps: P;
+  constructor(private test: TestService) {}
+  get aData() {
+    return this.test.tData;
+  }
 
+  get list():P[]{
+    let list :P[]=[];
+    list = this.test.list
+    return list;
   }
-   get aData(){
-     return this.test.tData;
-  }
-  get p():any{
-    return this.test.p;
- }
   ngOnInit(): void {
-    console.log("ngOnInit");
+    console.log('ngOnInit');
     this.test.getdata();
-    this.test.getp().subscribe(pp=>this.ps = pp
-      console.log(pp));
-    this.data2 = this.test.getdata2();
-
+    this.test.get2();
   }
-
+  search($event){
+    console.log($event);
+  }
 }

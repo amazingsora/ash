@@ -15,28 +15,33 @@ import net.sf.json.JSONObject;
 @RequestMapping("/rf")
 public class RestFulTestController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
-	public Object search(@PathVariable String id) {
+	public String search(@PathVariable String id) {
+		JSONArray arr = new JSONArray();
+
 		Object result = null;
-		JSONObject jsonObject = new JSONObject();  
-		jsonObject.put("id", id);
-		jsonObject.put("name", "a");
-		jsonObject.put("sp", "!#)$");
-		if(!StringUtils.equals(id, "a")){
-			System.out.println("獲取陣列");
-			JSONArray arr = new JSONArray();  
-			arr.add(jsonObject);
-			JSONObject ob = new JSONObject();  
-			ob.put("id", "f");
-			ob.put("name", "f");
-			ob.put("sp", "f");
-			arr.add(ob);
+		if (StringUtils.isNoneBlank(id)) {
+			if (id.toUpperCase().equals("LBU")) {
+				JSONObject ob = new JSONObject();
+				ob.put("id", "LBU");
+				ob.put("name", "LBU");
+				ob.put("sp", "OVER");
+				arr.add(ob);
+			} else if (id.equals("keyword")) {
+				return result.toString();
 
-			result = arr;
+			}
 
-		}else {
-			result = jsonObject;
-		}			
-		return result;
+			else {
+				JSONObject jsonObject = new JSONObject();
+				jsonObject.put("id", id);
+				jsonObject.put("name", "default");
+				jsonObject.put("sp", "!#)$");
+				arr.add(jsonObject);
+			}
+		}
+		result = arr;
+
+		return result.toString();
 
 	}
 

@@ -152,7 +152,6 @@ public class InstallCert {
         ks.setCertificateEntry(alias, cert);
 
         OutputStream out = new FileOutputStream("jssecacerts");
-        ks.store(1, passphrase);
         out.close();
 
         System.out.println();
