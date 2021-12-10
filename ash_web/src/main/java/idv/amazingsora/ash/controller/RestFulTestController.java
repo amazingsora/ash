@@ -1,21 +1,23 @@
 package idv.amazingsora.ash.controller;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import idv.amazingsora.ash.until.PropertiesUntil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/rf")
 public class RestFulTestController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
 	public String search(@PathVariable String id) {
+		String a = PropertiesUntil.getKey("flow.highDeptUserApplyOff");
+		System.out.println("A ===>" + a);
+
 		JSONArray arr = new JSONArray();
 
 		Object result = null;
@@ -27,7 +29,7 @@ public class RestFulTestController {
 				ob.put("sp", "OVER");
 				arr.add(ob);
 			} else if (id.equals("keyword")) {
-				return result.toString();
+				return "";
 
 			}
 
