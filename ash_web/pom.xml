@@ -11,14 +11,14 @@
 	</parent>
 	<artifactId>ash_web</artifactId>
 	<name>ash_web</name>
-	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>org.model</groupId>
+			<groupId>idv.AmAzingsorA</groupId>
 			<artifactId>ash_service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 
 		</dependency>
 	</dependencies>
