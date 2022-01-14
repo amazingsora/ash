@@ -99,11 +99,12 @@
 			<artifactId>lombok</artifactId>
 		</dependency>
 		<!-- MySQL JDBC driver -->
-		<!-- http://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
+
 
 		<!-- SQLServer JDBC driver (JTDS) -->
 		<!-- http://mvnrepository.com/artifact/net.sourceforge.jtds/jtds -->

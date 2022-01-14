@@ -1,7 +1,9 @@
-package org.model.Entity;
+package idv.amazingsora.Entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import lombok.Data;
 
 
 /**
@@ -9,11 +11,14 @@ import javax.persistence.*;
  * 
  */
 @Entity
+@Data
 @NamedQuery(name="Demodata.findAll", query="SELECT d FROM Demodata d")
 public class Demodata implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+    @GeneratedValue
+
 	private int seq;
 
 	private String c1;
