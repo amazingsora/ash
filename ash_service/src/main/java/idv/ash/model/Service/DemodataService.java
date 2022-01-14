@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import idv.ash.model.Entity.Demodata;
 import idv.ash.model.Repository.DemodataRepository;
 
-@Service("PersonSpringDataJPAService")
+@Service
 public class DemodataService {
 
 	@Autowired
