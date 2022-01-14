@@ -1,10 +1,10 @@
-package idv.amazingsora.Service;
+package idv.ash.model.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import idv.amazingsora.Entity.Demodata;
-import idv.amazingsora.Repository.DemodataRepository;
+import idv.ash.model.Entity.Demodata;
+import idv.ash.model.Repository.DemodataRepository;
 
 @Service("PersonSpringDataJPAService")
 public class DemodataService {

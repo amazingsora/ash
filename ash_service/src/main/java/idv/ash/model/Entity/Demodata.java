@@ -1,4 +1,4 @@
-package idv.amazingsora.Entity;
+package idv.ash.model.Entity;
 
 import java.io.Serializable;
 import javax.persistence.*;

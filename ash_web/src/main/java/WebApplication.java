@@ -7,10 +7,10 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-@ComponentScan({"idv.amazingsora"})
-@EntityScan("idv.amazingsora")
+@ComponentScan({"idv.ash.model","idv.amazingsora"})
+@EntityScan("idv.ash.model")
 @SpringBootApplication(scanBasePackages = "idv.amazingsora")
-@EnableJpaRepositories("idv.amazingsora.Repository")
+@EnableJpaRepositories("idv.ash.model.Repository")
 
 public class WebApplication extends SpringBootServletInitializer {
 
