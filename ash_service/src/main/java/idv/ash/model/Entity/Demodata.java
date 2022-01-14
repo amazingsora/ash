@@ -1,9 +1,13 @@
 package idv.ash.model.Entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
-import lombok.Data;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.NamedQuery;
 
 
 /**
@@ -113,6 +117,13 @@ public class Demodata implements Serializable {
 
 	public void setUpdatedTime(String updatedTime) {
 		this.updatedTime = updatedTime;
+	}
+
+	@Override
+	public String toString() {
+		return "Demodata [seq=" + seq + ", c1=" + c1 + ", c2=" + c2 + ", c3=" + c3 + ", c4=" + c4 + ", createdName="
+				+ createdName + ", createdTime=" + createdTime + ", updatedName=" + updatedName + ", updatedTime="
+				+ updatedTime + "]";
 	}
 
 }
