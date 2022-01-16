@@ -16,10 +16,9 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>idv.AmAzingsorA</groupId>
+			<groupId>idv.amazingsora</groupId>
 			<artifactId>ash_service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-
 		</dependency>
 	</dependencies>
 	<build>
