@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import idv.amazingsora.ash.until.PropertiesUntil;
+import idv.amazingsora.ash.util.PropertiesUntil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 

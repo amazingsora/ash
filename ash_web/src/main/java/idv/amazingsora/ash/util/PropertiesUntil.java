@@ -1,4 +1,4 @@
-package idv.amazingsora.ash.until;
+package idv.amazingsora.ash.util;
 
 import java.util.Locale;
 import java.util.ResourceBundle;

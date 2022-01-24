@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import idv.ash.model.Entity.Demodata;
 import idv.ash.model.Facade.DemodataFacade;
 import idv.ash.model.Repository.DemodataRepository;
+import idv.ash.model.Util.JDBCUtil;
 
 @Service
 public class DemodataService {
@@ -34,6 +35,11 @@ public class DemodataService {
 	public  List<Demodata>  queryAll2(Demodata obj) throws Exception {
 		return demodataFacade.queryTest1(obj);
 
+	}
+	public void jdbcTest () {
+		JDBCUtil jdbc =new JDBCUtil();
+		jdbc.createQuery("select * from demodata where C1 = 'd11' ");
+		
 	}
 	
 }

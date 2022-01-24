@@ -32,7 +32,12 @@ public class Longest_Common_Prefix {
 				String word = a.substring(i, i + 1);
 				boolean flag = true;
 				for (int j = 1; j < strs.length; j++) {
-					if (!(strs[j].indexOf(word) > -1)) {
+					String w = "";
+					if(i<strs[j].length()) {
+						 w = strs[j].substring(i,i+1);
+
+					}
+					if (!(w.indexOf(word) > -1)) {
 						flag = false;
 						break;
 					}
@@ -83,7 +88,9 @@ public class Longest_Common_Prefix {
 		String[] str4 = { "a" };
 		String[] str5 = {"flower","flower","flower","flower"};
 		String[] str6 = {"flower","fkow"};
+		String[] str7 = { "aa","ab" };
+		String[] str8 ={"c","acc","ccc"};
 
-		System.out.println(new Longest_Common_Prefix().longestCommonPrefix(strs));
+		System.out.println(new Longest_Common_Prefix().longestCommonPrefix(str5));
 	}
 }

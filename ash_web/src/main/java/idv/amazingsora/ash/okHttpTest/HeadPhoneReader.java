@@ -14,7 +14,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import idv.amazingsora.ash.until.Okhttp3Until;
+import idv.amazingsora.ash.util.Okhttp3Until;
 import okhttp3.FormBody;
 import okhttp3.Request;
 

@@ -1,4 +1,4 @@
-package idv.amazingsora.ash.until;
+package idv.amazingsora.ash.util;
 
 /*
  * Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.

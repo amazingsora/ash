@@ -6,15 +6,15 @@ import java.util.List;
 import java.util.Map;
 
 
-public class Valid_Parentheses {
+public class Valid_Parentheses{
 	public static void main(String[] args) {
-		String str = "[{()}]";
-		System.out.println(new Solution().isValid(str));
+		String str = "[{()}]{{";
+		System.out.println(new v20().isValid(str));
 	}
 
 }
 
-class Solution {
+class v20 {
 	List<String> lw = new LinkedList<String>();
 	List<String> rw = new LinkedList<String>();
 	Map<String, String> map = new HashMap<>();
@@ -35,8 +35,6 @@ class Solution {
 		// 檢核
 		List<String> tarW = new LinkedList<String>();
 		int count =1;
-		int index = 0;
-		List <Integer>lastIndexList = new LinkedList<>();
 		String firstW = String.valueOf(s.charAt(0));
 		String lastW = String.valueOf(s.charAt(s.length()-1));
 		if(lw.contains(lastW)) {
@@ -46,22 +44,18 @@ class Solution {
 		tarW.add(firstW);
 		System.out.printf("第%s數 為: %s \n", 1,tarW.get(0));
 		for (int i = 1; i < s.length(); i++) {
-			System.out.println("index ===>"+index);
 			String w = String.valueOf(s.charAt(i));
 			System.out.printf("第%s數 為: %s \n", i+1,w);
 			
-			if(tarW.size()==0) {
-				return false;
-			}
-			if(index!=-1&&w.equals(map.get(tarW.get(index)))) {
+			if(tarW.size()>0&&w.equals(map.get(tarW.get(tarW.size()-1)))) {
+				tarW.remove(tarW.size()-1);
 				count--;
 				
 				
 			}
 			else if(lw.contains(w)) {
 				tarW.add(w);
-				lastIndexList.add(index);
-				index = (tarW.size()-1);
+				
 				count++;
 		
 			}else {
@@ -70,7 +64,7 @@ class Solution {
 			}
 
 		}
-		if(count>=0) {
+		if(count!=0) {
 			return false;
 
 		}
