@@ -9,6 +9,10 @@ import { P } from 'src/until/P';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  fileToUpload: File = null;
+
+
+
   title = 'web';
   data: string = '字串寫死';
   data2: any;
@@ -17,7 +21,11 @@ export class AppComponent implements OnInit {
   get aData() {
     return this.test.tData;
   }
+  handleFileInput(event) {
 
+    this.fileToUpload = event.target.files.item(0);
+    this.test.onUpload(this.fileToUpload);
+    }
   get list():P[]{
     let list :P[]=[];
     list = this.test.list

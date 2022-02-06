@@ -125,5 +125,5 @@ public class Demodata implements Serializable {
 				+ createdName + ", createdTime=" + createdTime + ", updatedName=" + updatedName + ", updatedTime="
 				+ updatedTime + "]";
 	}
-
+	
 }
