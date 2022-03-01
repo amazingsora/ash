@@ -33,10 +33,11 @@ public class HelloController {
 	@GetMapping("/queryTest")
     public String query() {
         System.out.println("query");
-        List<Demodata> data1 = service.queryAll1("d1");
+        List<Demodata> data1 = service.queryC1("d1");
         
         JSONArray j1 =  JSONArray.fromObject(data1);
         
+        System.out.println(j1.toString());
         return j1.toString();
     }
 	@GetMapping("/queryTest2")

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import idv.ash.model.Entity.Demodata;
 import idv.ash.model.Facade.DemodataFacade;
 import idv.ash.model.Repository.DemodataRepository;
+import idv.ash.model.Repository.Impl.DemodataRepositoryImpl;
 import idv.ash.model.Util.JDBCUtil;
 
 @Service
@@ -15,6 +16,10 @@ public class DemodataService {
 
 	@Autowired
 	private DemodataRepository demodataRepository;
+	@Autowired
+	private DemodataRepositoryImpl impl;
+	
+	
 	@Autowired
 	DemodataFacade demodataFacade;
 	public void userTest() {
@@ -28,8 +33,8 @@ public class DemodataService {
 		System.out.println("寫入完成");
 
 	}
-	public  List<Demodata>  queryAll1(String c1) {
-		return demodataRepository.queryAllFor(c1);
+	public  List<Demodata>  queryC1(String c1) {
+		return demodataRepository.queryC1(c1);
 
 	}
 	public  List<Demodata>  queryAll2(Demodata obj) throws Exception {
@@ -37,6 +42,11 @@ public class DemodataService {
 
 	}
 	public void jdbcTest () {
+		JDBCUtil jdbc =new JDBCUtil();
+		jdbc.createQuery("select * from demodata where C1 = 'd11' ");
+		
+	}
+	public void queryList (String []value) {
 		JDBCUtil jdbc =new JDBCUtil();
 		jdbc.createQuery("select * from demodata where C1 = 'd11' ");
 		
