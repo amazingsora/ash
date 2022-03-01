@@ -23,10 +23,17 @@ export class TestService {
   };
 
   constructor(private http: HttpClient) {}
+  onUpload(fileToUpload: File){
+    const fd = new FormData();
+    fd.append('file',fileToUpload,fileToUpload.name);
+    this.http.post('http://localhost:8839/ASH/angularUp',fd).subscribe(res=>{
+console.log(res);
 
+    });
+  }
   getdata() {
     this.http
-      .get('http://localhost:8838/ASH/angularTest', {
+      .get('http://localhost:8839/ASH/angularTest', {
         observe: 'response',
         responseType: 'text',
       })
@@ -42,14 +49,14 @@ export class TestService {
     return '222222';
   }
   get1() {
-    this.http.get<any>('http://localhost:8838/ASH/rf/i').subscribe((data) => {
+    this.http.get<any>('http://localhost:8839/ASH/rf/i').subscribe((data) => {
       console.log('get1 ===>');
       console.log(data);
     });
   }
 
   get2() {
-    this.http.get<any>('http://localhost:8838/ASH/rf/i').subscribe((data) => {
+    this.http.get<any>('http://localhost:8839/ASH/rf/i').subscribe((data) => {
       console.log('get2 ===>');
 
       console.log(data.length);
