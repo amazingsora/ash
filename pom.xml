@@ -16,13 +16,9 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-<<<<<<< HEAD
 		<version>2.6.7</version>
 		<relativePath /> <!-- lookup parent from repository -->
-=======
-		<version>2.5.3</version>
-		<relativePath />
->>>>>>> main
+
 	</parent>
 
 	<dependencyManagement>
@@ -195,13 +191,9 @@
 
 	<build>
 		<pluginManagement>
-<<<<<<< HEAD
-			<!-- lock down plugins versions to avoid using Maven 
-				defaults (may be moved to parent pom) -->
-=======
 			<!-- lock down plugins versions to avoid using Maven defaults (may be 
 				moved to parent pom) -->
->>>>>>> main
+
 			<plugins>
 				<!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
 				<plugin>
