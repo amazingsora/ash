@@ -1,9 +1,7 @@
 package idv.LeetCode;
 
-import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 /*
 Example 1:
@@ -19,7 +17,6 @@ Explanation: There is no common prefix among the input strings.
 public class Longest_Common_Prefix {
 
 	public String longestCommonPrefix(String[] strs) {
-		StringBuffer result = new StringBuffer();
 		String tarWords = "";
 		List<String> set = new LinkedList<String>();
 		String a = strs[0];
@@ -74,16 +71,5 @@ public class Longest_Common_Prefix {
 
 		}
 		return "";
-	}
-
-	public static void main(String[] args) {
-		String[] strs = { "flower", "flow", "flight" };
-		String[] str2 = { "dog", "racecar", "car" };
-		String[] str3 = { "" };
-		String[] str4 = { "a" };
-		String[] str5 = {"flower","flower","flower","flower"};
-		String[] str6 = {"flower","fkow"};
-
-		System.out.println(new Longest_Common_Prefix().longestCommonPrefix(strs));
 	}
 }

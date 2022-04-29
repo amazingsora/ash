@@ -1,10 +1,8 @@
 package org.ash.poi;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -120,7 +118,7 @@ public class CompareFile {
 		Map<String, Object> compare1 = getDirectoryINFO(fileName1);
 		Map<String, Object> compare2 = getDirectoryINFO(fileName2);
 
-		Workbook  wb = new XSSFWorkbook();
+		Workbook wb = new XSSFWorkbook();
 		Sheet sheet = wb.createSheet("sheet1");
 
 		FileOutputStream outputStream = new FileOutputStream("D:\\TestDemo\\Compare\\CompareLog.xlsx");
@@ -164,12 +162,12 @@ public class CompareFile {
 
 				if (file2 != null && file1 != null) {
 
-					List<String> message =  readFileContext(file1,file2);
+					List<String> message = readFileContext(file1, file2);
 					String value1 = "";
 					String value2 = "";
-					if(message.size()>2) {
-						 value1 = message.get(1);
-						 value2 = message.get(2);
+					if (message.size() > 2) {
+						value1 = message.get(1);
+						value2 = message.get(2);
 
 					}
 
@@ -242,123 +240,144 @@ public class CompareFile {
 
 	public static void gebExcel(File fileName1, File fileName2) throws IOException {
 		XSSFWorkbook wb = new XSSFWorkbook();
-		XSSFSheet sheet = wb.createSheet("sheet1");
 
-		Map<String, Object> compare1 = getDirectoryINFO(fileName1);
-		Map<String, Object> compare2 = getDirectoryINFO(fileName2);
-		FileOutputStream outputStream = new FileOutputStream("D:\\TestDemo\\Compare\\CCompareLog.xlsx");
-		XSSFCellStyle green = wb.createCellStyle();
-		green.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-		green.setFillForegroundColor(IndexedColors.GREEN.getIndex());
-		XSSFCellStyle red = wb.createCellStyle();
-		red.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-		red.setFillForegroundColor(IndexedColors.RED.getIndex());
-		Font font = wb.createFont();
-		font.setColor(IndexedColors.WHITE.getIndex());
-		red.setFont(font);
-		green.setFont(font);
+		try {
+			XSSFSheet sheet = wb.createSheet("sheet1");
 
-		int count = 0;
-		for (String key : compare1.keySet()) {
+			Map<String, Object> compare1 = getDirectoryINFO(fileName1);
+			Map<String, Object> compare2 = getDirectoryINFO(fileName2);
+			FileOutputStream outputStream = new FileOutputStream("D:\\TestDemo\\Compare\\CCompareLog.xlsx");
+			XSSFCellStyle green = wb.createCellStyle();
+			green.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+			green.setFillForegroundColor(IndexedColors.GREEN.getIndex());
+			XSSFCellStyle red = wb.createCellStyle();
+			red.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+			red.setFillForegroundColor(IndexedColors.RED.getIndex());
+			Font font = wb.createFont();
+			font.setColor(IndexedColors.WHITE.getIndex());
+			red.setFont(font);
+			green.setFont(font);
 
-			String Cgeckkey = key + "X";
-			if (Cgeckkey.indexOf(".classX") > -1) {
-				System.out.println(key);
-				File file1 = (File) compare1.get(key);
-				File file2 = (File) compare2.get(key);
+			int count = 0;
+			for (String key : compare1.keySet()) {
 
-				if (file2 != null && file1 != null) {
+				String Cgeckkey = key + "X";
+				if (Cgeckkey.indexOf(".classX") > -1) {
+					System.out.println(key);
+					File file1 = (File) compare1.get(key);
+					File file2 = (File) compare2.get(key);
 
-					String file1MD5 = getFileMD5(file1);
-					String file2MD5 = getFileMD5(file2);
+					if (file2 != null && file1 != null) {
 
-					if (file1MD5.equals(file2MD5)) {
-//						cell.setCellStyle(red);
-					} else {
-						XSSFRow row = sheet.createRow(count++);
+						String file1MD5 = getFileMD5(file1);
+						String file2MD5 = getFileMD5(file2);
 
-						String filestr1[] = key.split("\\\\");
-						String FileName = filestr1[filestr1.length - 1];
-						String appendStr = "";
+						if (file1MD5.equals(file2MD5)) {
+//							cell.setCellStyle(red);
+						} else {
+							XSSFRow row = sheet.createRow(count++);
 
-						for (int i = 2; i < filestr1.length; i++) {
-							if (!filestr1[filestr1.length - i].equals("Compare")) {
-								appendStr = filestr1[filestr1.length - i] + File.separator + appendStr;
-							} else {
-								break;
+							String filestr1[] = key.split("\\\\");
+							String FileName = filestr1[filestr1.length - 1];
+							String appendStr = "";
+
+							for (int i = 2; i < filestr1.length; i++) {
+								if (!filestr1[filestr1.length - i].equals("Compare")) {
+									appendStr = filestr1[filestr1.length - i] + File.separator + appendStr;
+								} else {
+									break;
+								}
 							}
-						}
-						row.createCell(0).setCellValue(appendStr);
-						row.createCell(1).setCellValue(FileName);
-						System.out.println("檔案名稱::" + appendStr + FileName);
+							row.createCell(0).setCellValue(appendStr);
+							row.createCell(1).setCellValue(FileName);
+							System.out.println("檔案名稱::" + appendStr + FileName);
 
+						}
+
+					}
+
+				}
+			}
+			wb.write(outputStream);
+			outputStream.flush();
+			outputStream.close();
+
+		} catch (Exception e) {
+
+		} finally {
+			if (wb != null) {
+				wb.close();
+			}
+
+		}
+
+	}
+
+	public static List<String> readFileContext(File file1, File file2) throws IOException {
+		Stream<String> stream = null;
+		Stream<String> stream2 = null;
+		List<String> data1 = new LinkedList<String>();
+		List<String> data2 = new LinkedList<String>();
+		List<String> message = new LinkedList<String>();
+		try {
+			String file1Path = file1.getAbsolutePath();
+			String file2Path = file2.getAbsolutePath();
+
+			stream = Files.lines(Paths.get(file1Path));
+			stream.forEach(a -> data1.add(a));
+			stream2 = Files.lines(Paths.get(file2Path));
+			stream2.forEach(a -> data2.add(a));
+
+			int minlength = data1.size();
+			int maxlength = 0;
+			// flag true = 最小為data1 反之DATA2
+			boolean flag = true;
+			if (minlength < data2.size()) {
+				maxlength = data2.size();
+			} else {
+				maxlength = data1.size();
+				minlength = data2.size();
+				flag = false;
+			}
+			if (minlength > 0) {
+
+				for (int i = 0; i < minlength; i++) {
+					String stringword1 = data1.get(i);
+					String stringword2 = data2.get(i);
+					if (!StringUtils.equals(stringword1, stringword2)) {
+						message.add("第_" + i + "_有差異");
+						message.add(stringword1);
+						message.add(stringword2);
+						break;
 					}
 
 				}
 
 			}
-		}
-		wb.write(outputStream);
-		outputStream.flush();
-		outputStream.close();
-	}
-
-	public static List<String> readFileContext(File file1, File file2) throws IOException {
-		BufferedReader br1 = new BufferedReader(new FileReader(file1.getAbsolutePath()));
-		BufferedReader br2 = new BufferedReader(new FileReader(file2.getAbsolutePath()));
-		String file1Path = file1.getAbsolutePath();
-		String file2Path = file2.getAbsolutePath();
-		List<String> data1 = new LinkedList<String>();
-		List<String> data2 = new LinkedList<String>();
-		List<String> message = new LinkedList<String>();
-		Stream<String> stream = Files.lines(Paths.get(file1Path));
-		stream.forEach(a -> data1.add(a));
-		Stream<String> stream2 = Files.lines(Paths.get(file2Path));
-		stream2.forEach(a -> data2.add(a));
-
-		int minlength = data1.size();
-		int maxlength = 0;
-		// flag true = 最小為data1 反之DATA2
-		boolean flag = true;
-		if (minlength < data2.size()) {
-			maxlength = data2.size();
-		} else {
-			maxlength = data1.size();
-			minlength = data2.size();
-			flag = false;
-		}
-		if (minlength > 0) {
-			
-			for (int i = 0; i < minlength; i++) {
-				String stringword1 = data1.get(i);
-				String stringword2 = data2.get(i);
-				if (!StringUtils.equals(stringword1, stringword2)) {
-					message.add("第_"+i+"_有差異");
-					message.add(stringword1);
-					message.add(stringword2);
-					break;
+			if (maxlength > minlength && message.size() == 0) {
+				String stringword = "";
+				message.add("第" + minlength + 1 + "__有差異");
+				if (flag) {
+					stringword = data2.get(minlength + 1);
+					message.add("");
+					message.add(stringword);
+				} else {
+					stringword = data1.get(minlength + 1);
+					message.add(stringword);
+					message.add("");
 				}
+			}
+			if (message.size() == 0) {
+				message.add("無差異");
 
 			}
 
-		}
-		if (maxlength > minlength && message.size() == 0) {
-			String stringword = "";
-			message.add("第"+minlength +1+"__有差異");
-			if (flag) {
-				stringword = data2.get(minlength +1);
-				message.add("");
-				message.add(stringword);
-			} else {
-				stringword = data1.get(minlength + 1);
-				message.add(stringword);
-				message.add("");
-			}
-		}
-		if (message.size() == 0) {
-			message.add("無差異");
+		} catch (Exception e) {
+
+		} finally {
 
 		}
+
 		return message;
 	}
 }

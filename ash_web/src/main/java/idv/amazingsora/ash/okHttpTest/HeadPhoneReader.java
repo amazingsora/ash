@@ -3,11 +3,9 @@ package idv.amazingsora.ash.okHttpTest;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -43,7 +41,6 @@ public class HeadPhoneReader {
 	/* 解析看板文章列表 */
 	private void parseArticle(String body,String keyWord[],String StartDate) throws ParseException {
 //		System.out.println("body ===" + body);
-		List<Map<String, String>> result = new ArrayList<>();
 		Document doc = Jsoup.parse(body);
 		Elements articleList = doc.select(".push");
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/ddHH:mm");

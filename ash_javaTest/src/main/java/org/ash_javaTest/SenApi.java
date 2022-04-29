@@ -1,48 +1,25 @@
 package org.ash_javaTest;
 
-import java.security.cert.X509Certificate;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import org.apache.commons.io.input.ReaderInputStream;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.StringReader;
-import java.net.HttpURLConnection;
-
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 import org.apache.commons.codec.binary.Hex;
-import org.apache.commons.collections.MapUtils;
-import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -50,9 +27,7 @@ import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
 import org.apache.http.conn.socket.PlainConnectionSocketFactory;
-import org.apache.http.conn.ssl.DefaultHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.conn.ssl.TrustStrategy;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -60,11 +35,9 @@ import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.ssl.SSLContextBuilder;
 import org.apache.http.util.EntityUtils;
 
 import net.sf.json.JSONObject;
-import org.apache.http.impl.client.CloseableHttpClient;
 
 public class SenApi {
 	public final static String HMAC_SHA256 = "HmacSHA256";
@@ -128,11 +101,6 @@ public class SenApi {
 		System.out.println("[data_list] => " + dataList);
 		requestMap.put("signature", signature);
 
-		String requestContent = "";
-		for (String key : requestMap.keySet()) {
-			String value = requestMap.get(key);
-			requestContent += key + "=" + value + "&";
-		}
 //		CloseableHttpClient httpClient = null;
 		CloseableHttpResponse response = null;
 		try {
@@ -215,8 +183,11 @@ public class SenApi {
 
 	public static String setForsigstrSub(List<Object> dataList, String platformProdNo) {
 		String forsigstrSub = "";
-		String productNameM = MapUtils.getString(((Map<String, String>) dataList.get(0)), "PRODUCT_NAME_M");
-		String productCodeM = MapUtils.getString(((Map<String, String>) dataList.get(0)), "PRODUCT_CODE_M");
+		
+		JSONObject json = JSONObject.fromObject(dataList.get(0));
+		
+		String productNameM = json.getString("PRODUCT_NAME_M");
+		String productCodeM = json.getString("PRODUCT_CODE_M");
 		forsigstrSub = platformProdNo + productCodeM + productNameM;
 		System.out.println("forsigstrSub ===" + forsigstrSub);
 		return forsigstrSub;
