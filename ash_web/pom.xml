@@ -11,11 +11,15 @@
 	</parent>
 	<artifactId>ash_web</artifactId>
 	<name>ash_web</name>
-	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>idv.amazingsora</groupId>
+			<artifactId>ash_service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -80,4 +84,27 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+	<profile>
+		<id>dev</id>
+		<activation>
+			<activeByDefault>true</activeByDefault>
+		</activation>
+		<properties>
+          	<spring.profiles.active>dev</spring.profiles.active>
+      	</properties>
+	</profile>
+	<profile>
+		<id>valid</id>
+		<properties>
+          	<spring.profiles.active>valid</spring.profiles.active>
+      	</properties>
+	</profile>
+	<profile>
+		<id>prod</id>
+		<properties>
+          	<spring.profiles.active>prod</spring.profiles.active>
+      	</properties>
+	</profile>
+</profiles>
 </project>
