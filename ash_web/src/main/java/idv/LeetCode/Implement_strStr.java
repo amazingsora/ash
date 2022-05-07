@@ -8,6 +8,7 @@ public class Implement_strStr {
 			return -1;
 
 		int loc = 0;
+		int x = 0;
 		int searchWindex = 0;
 		boolean flag = false;
 		for (int i = 0; i < haystack.length(); i++) {
