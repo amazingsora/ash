@@ -23,34 +23,7 @@
 	</dependencies>
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>com.github.eirslett</groupId>
-				<artifactId>frontend-maven-plugin</artifactId>
-				<version>1.9.1</version>
-				<configuration>
-					<nodeVersion>v17.1.0</nodeVersion>
-					<npmVersion>8.1.4</npmVersion>
-					<yarnVersion>v1.22.17</yarnVersion>
-					<installDirectory>target</installDirectory>
-					<workingDirectory>src/main/web/</workingDirectory>
-				</configuration>
-
-				<executions>
-					<execution>
-						<id>install node and npm</id>
-						<goals>
-							<goal>install-node-and-npm</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>npm install</id>
-						<goals>
-							<goal>npm</goal>
-						</goals>
-					</execution>
 			
-				</executions>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
