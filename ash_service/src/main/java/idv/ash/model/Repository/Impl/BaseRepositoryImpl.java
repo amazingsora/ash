@@ -4,9 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.EntityManager;
 
-import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
-import org.springframework.transaction.annotation.Transactional;
 
 import idv.ash.model.Repository.BaseRepository;
 
